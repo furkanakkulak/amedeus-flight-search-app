@@ -2,26 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer components {
+  html,
+  body,
+  #__next,
+  main {
+    @apply h-full select-none;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  nav {
+    @apply w-full py-5 px-10 fixed top-0 z-10 bg-white;
+
+    .logo-container {
+      @apply flex items-center justify-center filter brightness-0;
+
+      img {
+        @apply h-8 w-auto;
+      }
+    }
+  }
+
+  main {
+    @apply flex justify-center items-center md:items-end;
+
+    .bg-image {
+      @apply absolute h-full bg-cover bg-top md:bg-center bg-no-repeat filter grayscale bg-[#575757] w-full;
+    }
+
+    .search-box {
+      @apply relative bg-white bg-opacity-80 shadow-2xl py-10 px-5 lg:mb-32 rounded-md grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10 md:mt-0 border border-opacity-80;
+
+      .inputs {
+        @apply col-span-1 lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5;
+      }
+      .right {
+        @apply flex flex-col justify-between items-center;
+      }
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.flights {
+  @apply w-11/12 md:w-2/3 mx-auto grid grid-cols-1 gap-5 py-10;
+
+  .title {
+    @apply relative bg-white bg-opacity-80 shadow-2xl py-5 px-5 rounded-md w-full flex justify-between items-center text-lg font-semibold tracking-widest italic;
+  }
+
+  .flight {
+    @apply relative bg-white bg-opacity-80 shadow-2xl py-5 px-5 rounded-md;
+
+    .airline-w-price {
+      @apply flex justify-between items-center w-full pb-5 text-lg md:text-3xl font-thin tracking-widest italic;
+
+      .price {
+        @apply flex justify-center items-center text-sm md:text-xl text-[#575757] italic  hover:text-black font-light hover:font-medium hover:cursor-pointer;
+        span {
+          @apply ml-2 flex justify-center items-center;
+          svg {
+            @apply h-8 w-8 font-extrabold;
+          }
+        }
+      }
+    }
+
+    .flight-info {
+      @apply flex flex-row justify-between items-center text-[#575757];
+      svg {
+        @apply inline-block w-6 h-6 md:w-10 md:h-10;
+      }
+      .departure {
+        @apply flex flex-col justify-between items-start;
+      }
+      .arrival {
+        @apply flex flex-col justify-between items-end;
+      }
+      .airport {
+        @apply text-base md:text-xl font-bold flex items-center gap-2;
+      }
+      .date {
+        @apply text-xs md:text-base font-bold flex items-center gap-2;
+      }
+      .time {
+        @apply text-xs md:text-base font-bold flex items-center gap-2;
+      }
+      .duration {
+        @apply flex flex-col justify-between items-center;
+        .time {
+          @apply text-sm md:text-lg font-medium;
+        }
+      }
+    }
+  }
 }
