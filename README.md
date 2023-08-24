@@ -22,7 +22,7 @@ To run the project locally, follow these steps:
    ```
 2. Navigate to the project directory:
    ```sh
-   cd Flight-Search-App
+   cd amadeus-flight-search-app
    ```
 3. Install the required dependencies:
    ```sh
